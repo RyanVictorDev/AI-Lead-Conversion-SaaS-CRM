@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: saas-crm-backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/saas_crm
+    username: saas_crm
+    password: saas_crm
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+security:
+  jwt:
+    # Troque esta chave em produção; deve ser uma string base64 suficientemente longa.
+    secret: bXktdmVyeS1sb25nLXNlY3JldC1rZXktZm9yLXNwcmluZy1qd3QtZXhhbXBsZQ==
+    expiration-minutes: 60
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
+
+  endpoint:
+    health:
+      show-details: when_authorized
+
